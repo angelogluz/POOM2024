@@ -21,7 +21,10 @@ while(true){
     }
     switch (opcao) {
         case 1:
-            acelerar(carro);
+            carro.acelerar();
+            break;
+        case 2:
+            console.table(carro);
             break;
     
         default:
@@ -31,16 +34,13 @@ while(true){
 
 console.table(carro);
 
-function acelerar(veiculo: Veiculo): void{
-    if(veiculo.marchaAtual != 0){
-    veiculo.velocidade += veiculo.potencia*0.1;
-    console.log(veiculo.velocidade);
-}}
+
 
 function criaVeiculo(): Veiculo{
-    const veiculo: Veiculo = new Veiculo();
-    veiculo.marca = teclado('Marca: ');
-    veiculo.modelo = teclado('Modelo: ');
+    
+    const marca = teclado('Marca: ');
+    const modelo = teclado('Modelo: ');
+    const veiculo: Veiculo = new Veiculo(marca, modelo);
     veiculo.potencia = +teclado('Potência: ');
     veiculo.numeroMarchas = +teclado('Número de marchas: ');
     return veiculo;
